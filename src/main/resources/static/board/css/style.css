@@ -1,0 +1,66 @@
+.layout-width {
+    min-width: 800px;
+    margin: auto;
+}
+
+.content-box {
+    min-width: 600px;
+    max-width: 800px;
+    min-height: 650px;
+    margin: 50px auto;
+    box-shadow: 1px 1px 10px rgba(255, 182, 193, 0.76);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create_button {
+    width: 100px;
+    height: 30px;
+    background-color: #FFEBFF;
+    border: 3px solid lightpink;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.create dt{
+    font-size: 20px;
+    text-align: left;
+}
+
+.create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create input {
+    border: none;
+    width: 100%;
+}
+
+.create textarea {
+    width: 100%;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td, th {
+    border: 2px solid rgba(246, 206, 212, 0.76);
+    padding: 8px;
+}
+th {
+    background-color: #FFEBFF;
+}
+
+.error {
+    text-align: left;
+    color: #f87262;
+}

@@ -23,10 +23,10 @@
             <td th:text="${item.getTitle()}"></td>
             <td th:text="${item.getContent()}"></td>
             <td th:text="${item.getCreatedAt().format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm'))}"></td>
-            <td><a th:href="@{/board/view/{seq}(seq=${item.seq})}">상세조회</a></td>
+            <td><a th:href="@{/board/view/{seq}(seq=${item.seq})}" class="view">상세조회</a></td>
         </tr>
         </tbody>
     </table>
-    <button type="button"><a th:href="@{/board/create}" th:text="#{글쓰기}"></a></button>
+    <button type="button" class="create_button"><a th:href="@{/board/create}" th:text="#{글쓰기}"></a></button>
 </main>
 </html>

@@ -20,9 +20,13 @@
     <th:block layout:fragment="addScript"></th:block>
 </head>
 <body>
+<div class="layout-width">
+    <div class="content-box">
 <header th:replace="~{outlines/_header::common}"></header>
-<main layout:fragment="content"></main>
+<main class="main" layout:fragment="content"></main>
 <footer th:replace="~{outlines/_footer::common}"></footer>
 <iframe name="ifrmHidden" class="dn"></iframe>
+</div>
+</div>
 </body>
 </html>

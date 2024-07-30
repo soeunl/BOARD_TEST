@@ -8,45 +8,47 @@
     <form name="frmModify" method="POST" th:action="@{/board/modify}" autocomplete="off" th:object="${requestBoard}">
         <input type="hidden" name="seq" th:field="*{seq}">
         <div class="error global" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
-        <dl>
-            <dt th:text="#{이메일}"></dt>
-            <dd>
-                <input type="text" name="email" th:field="*{email}">
-                <div class="error" th:each="err : ${#fields.errors('email')}"
-                     th:text="${err}"></div>
-            </dd>
-        </dl>
-        <dl>
-            <dt th:text="#{비밀번호}"></dt>
-            <dd>
-                <input type="password" name="password" th:field="*{password}">
-                <div class="error" th:each="err : ${#fields.errors('password')}"
-                     th:text="${err}"></div>
-            </dd>
-        </dl>
-        <dl>
-            <dt th:text="#{비밀번호_확인}"></dt>
-            <dd>
-                <input type="password" name="confirmPassword" th:field="*{confirmPassword}">
-                <div class="error" th:each="err : ${#fields.errors('confirmPassword')}" th:text="${err}"></div>
-            </dd>
-        </dl>
-        <dl>
-            <dt th:text="#{제목}"></dt>
-            <dd>
-                <input type="text" name="title" th:field="*{title}">
-                <div class="error" th:each="err : ${#fields.errors('title')}" th:text="${err}"></div>
-            </dd>
-        </dl>
-        <dl>
-            <dt th:text="#{글작성}"></dt>
-            <dd>
-                <textarea id="content" rows="10" placeholder="게시글 내용 입력" th:field="*{content}"></textarea>
-                <div class="error" th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
-            </dd>
-        </dl>
-        <button type="reset" th:text="#{다시쓰기}"></button>
-        <button type="submit" th:text="#{수정하기}"></button>
+        <div class="create">
+            <table>
+                <tr>
+                    <th><label for="email" th:text="#{이메일}"></label></th>
+                    <td>
+                        <input type="text" id="email" name="email" th:field="*{email}" placeholder="이메일 입력">
+                        <div class="error" th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="password" th:text="#{비밀번호}"></label></th>
+                    <td>
+                        <input type="password" id="password" name="password" th:field="*{password}" placeholder="비밀번호 입력">
+                        <div class="error" th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="confirmPassword" th:text="#{비밀번호_확인}"></label></th>
+                    <td>
+                        <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}" placeholder="비밀번호 확인">
+                        <div class="error" th:each="err : ${#fields.errors('confirmPassword')}" th:text="${err}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="title" th:text="#{제목}"></label></th>
+                    <td>
+                        <input type="text" id="title" name="title" th:field="*{title}" placeholder="제목 입력">
+                        <div class="error" th:each="err : ${#fields.errors('title')}" th:text="${err}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="content" th:text="#{글작성}"></label></th>
+                    <td>
+                        <textarea id="content" name="content" rows="10" placeholder="게시글 내용 입력" th:field="*{content}"></textarea>
+                        <div class="error" th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <button type="reset" th:text="#{다시쓰기}" class="create_button"></button>
+        <button type="submit" th:text="#{수정하기}" class="create_button"></button>
     </form>
 </main>
 </html>

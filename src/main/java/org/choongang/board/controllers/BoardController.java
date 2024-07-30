@@ -45,7 +45,6 @@ public class BoardController {
 
     @GetMapping("/create")
     public String createBoard(@ModelAttribute RequestBoard form) {
-
         return "board/create";
     }
 
