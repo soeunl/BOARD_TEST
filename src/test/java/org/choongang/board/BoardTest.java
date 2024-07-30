@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import org.choongang.board.controllers.RequestBoard;
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.repositories.BoardDataRepository;
+import org.choongang.board.services.BoardDeleteService;
 import org.choongang.board.services.BoardService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,8 @@ public class BoardTest {
     @Autowired
     private BoardDataRepository boardDataRepository;
 
+    @Autowired
+    private BoardDeleteService boardDeleteService;
     @Autowired
     private BoardService boardService;
 
@@ -80,5 +83,12 @@ public class BoardTest {
         System.out.println(form);
         
         boardDataRepository.saveAndFlush(boardData);
+    }
+
+    @Test
+    void deleteTest() { // 삭제 테스트
+        Long seq = 1L;
+        boardDeleteService.delete(seq);
+        boardDataRepository.flush();
     }
 }

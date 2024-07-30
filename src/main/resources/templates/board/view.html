@@ -16,7 +16,7 @@
     </dl>
     <dl>
         <dt th:text="#{작성_일시}"></dt>
-        <dd th:text="*{createdAt}"></dd>
+        <dd th:text="*{createdAt.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy년MM월dd일 HH시mm분'))}"></dd>
     </dl>
     <dl>
         <dt th:text="#{내용}"></dt>
