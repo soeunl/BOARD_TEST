@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -19,6 +20,12 @@ public class BoardService {
         String hash = passwordEncoder.encode(form.getPassword()); // BCrypt 해시화
         boardData.setPassword(hash);
         boardDataRepository.saveAndFlush(boardData);
+    }
+
+    public RequestBoard getForm(Long seq) {
+        BoardData boardData = boardDataRepository.findById(seq).orElse(null);
+        RequestBoard form = new ModelMapper().map(boardData, RequestBoard.class);
+        return form;
     }
 }
 

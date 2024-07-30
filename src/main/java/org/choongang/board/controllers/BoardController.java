@@ -62,13 +62,16 @@ public class BoardController {
         return "redirect:/board/";
     }
 
-    @GetMapping("/modify")
-    public String modifyBoard(@ModelAttribute RequestBoard form) {
+    @GetMapping("/modify/{seq}")
+    public String modifyBoard(@PathVariable("seq") Long seq, Model model) {
+
+        RequestBoard form = boardService.getForm(seq);
+        model.addAttribute("requestBoard", form);
 
         return "board/modify";
     }
 
-    @PostMapping("/modify")
+    @PostMapping("/modify/{seq}")
     public String modifyBoardPs(@Valid RequestBoard form, Errors errors) {
 
         boardValidator.validate(form, errors);

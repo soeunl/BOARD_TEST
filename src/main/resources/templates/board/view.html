@@ -21,7 +21,7 @@
         <dt th:text="#{내용}"></dt>
         <dd th:text="${boardDataView.content}"></dd>
     </dl>
-        <button type="button" th:text="#{수정하기}"></button>
-        <button type="button" th:text="#{삭제하기}"></button>
+    <button type="button"><a th:href="@{/board/modify/{seq}(seq=${boardDataView.seq})}" th:text="#{수정하기}"></a></button>
+    <button type="button" th:text="#{삭제하기}"></button>
 </main>
 </html>
