@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+
+<main layout:fragment="content">
+    <h2 th:text="#{게시글_조회}"></h2>
+    <dl>
+        <dt th:text="#{이메일}"></dt>
+        <dd th:text="${boardDataView.email}"></dd>
+    </dl>
+    <dl>
+        <dt th:text="#{제목}"></dt>
+        <dd th:text="${boardDataView.title}"></dd>
+    </dl>
+    <dl>
+        <dt th:text="#{작성_일시}"></dt>
+        <dd th:text="${boardDataView.createdAt}"></dd>
+    </dl>
+    <dl>
+        <dt th:text="#{내용}"></dt>
+        <dd th:text="${boardDataView.content}"></dd>
+    </dl>
+        <button type="button" th:text="#{수정하기}"></button>
+        <button type="button" th:text="#{삭제하기}"></button>
+</main>
+</html>

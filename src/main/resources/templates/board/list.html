@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+
+<main layout:fragment="content">
+    <h2 th:text="#{게시글_목록}"></h2>
+    <table class="list-table">
+        <thead>
+        <tr>
+            <th th:text="#{글번호}"></th>
+            <th th:text="#{작성자}"></th>
+            <th th:text="#{제목}"></th>
+            <th th:text="#{내용}"></th>
+            <th th:text="#{작성_일시}"></th>
+            <th th:text="#{조회}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${boardDataList}">
+            <td th:text="${item.getSeq()}"></td>
+            <td th:text="${item.getEmail()}"></td>
+            <td th:text="${item.getTitle()}"></td>
+            <td th:text="${item.getContent()}"></td>
+            <td th:text="${item.getCreatedAt().format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm'))}"></td>
+            <td><a th:href="@{/board/view/{seq}(seq=${item.seq})}">상세조회</a></td>
+        </tr>
+        </tbody>
+    </table>
+        <button type="button" th:text="#{글쓰기}"></button>
+</main>
+</html>
