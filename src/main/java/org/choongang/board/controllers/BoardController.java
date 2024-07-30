@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.repositories.BoardDataRepository;
+import org.choongang.board.services.BoardDeleteService;
 import org.choongang.board.services.BoardService;
 import org.choongang.board.validator.BoardValidator;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class BoardController {
     private final BoardValidator boardValidator;
     private final BoardService boardService;
     private final BoardDataRepository boardDataRepository;
+    private final BoardDeleteService boardDeleteService;
 
     @GetMapping("/") // 메인 화면
     public String boardList(@ModelAttribute RequestBoard form, Model model) {
@@ -71,7 +73,7 @@ public class BoardController {
         return "board/modify";
     }
 
-    @PostMapping("/modify/{seq}")
+    @PostMapping("/modify")
     public String modifyBoardPs(@Valid RequestBoard form, Errors errors) {
 
         boardValidator.validate(form, errors);
@@ -83,6 +85,17 @@ public class BoardController {
 
         boardService.save(form);
 
+        return "redirect:/board/";
+    }
+
+    @GetMapping("delete/{seq}")
+    public String deleteBoard(@PathVariable("seq") Long seq, Model model) {
+
+        RequestBoard form = boardService.getForm(seq);
+
+        if( form != null ){
+            boardDeleteService.delete(seq);
+        }
         return "redirect:/board/";
     }
 }

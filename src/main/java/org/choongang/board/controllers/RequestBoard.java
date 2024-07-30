@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class RequestBoard { // 여기는 커맨드 객체
 
+    private Long seq;
     @NotBlank
     @Email
     private String email;
