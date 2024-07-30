@@ -24,7 +24,7 @@ public class BoardService {
         Long seq = Objects.requireNonNullElse(form.getSeq(), 0L);
         BoardData boardData = boardDataRepository.findById(seq).orElseGet(BoardData::new);
         /*
-        if (seq == 0L) { // 추가
+        if (seq == 0L) { // ModelMapper 다음엔 꼭 써볼게요!!
             boardData = new ModelMapper().map(form, BoardData.class);
         }
          */

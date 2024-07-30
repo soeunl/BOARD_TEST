@@ -2,14 +2,12 @@ package org.choongang.board;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.choongang.board.controllers.RequestBoard;
 import org.choongang.board.entities.BoardData;
 import org.choongang.board.repositories.BoardDataRepository;
 import org.choongang.board.services.BoardDeleteService;
 import org.choongang.board.services.BoardService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
@@ -74,15 +72,12 @@ public class BoardTest {
 
     @Test
     void modifyTest() { // 수정 테스트
-        Long seq = 1L;
-        BoardData boardData = boardDataRepository.findById(seq).orElse(null);
-        RequestBoard form = new ModelMapper().map(boardData, RequestBoard.class);
+        BoardData form = boardDataRepository.findById(2L).orElse(null);
         System.out.println(form);
-
-        form.setEmail("test@test.org");
+        form.setTitle("이걸로 수정!!");
+        boardDataRepository.save(form);
+        boardDataRepository.flush();
         System.out.println(form);
-        
-        boardDataRepository.saveAndFlush(boardData);
     }
 
     @Test
